@@ -11,11 +11,15 @@ import (
 )
 
 func main() {
-	sess, err := discordgo.New("Bot MTA1ODE3MDU0Mzg2MzUwOTAyMg.GdWHB1.MfQx7iMNFM2UxvNno-FfbTJiebZP2HVYJVIfuo")
+	token, error := os.ReadFile("token-bot.txt")
+	if error != nil {
+		log.Fatal(error)
+	}
+	teste := "Bot " + string(token)
+	sess, err := discordgo.New(teste)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	sess.AddHandler(func(s *discordgo.Session, m *discordgo.MessageCreate) {
 		if m.Author.ID == s.State.User.ID {
 			return
