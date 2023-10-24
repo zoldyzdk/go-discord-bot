@@ -26,7 +26,7 @@ func main() {
 		}
 
 		if m.Content == "hello" {
-			s.ChannelMessageSend(m.ChannelID, "world!")
+			s.ChannelMessageSendReply(m.ChannelID, "World!", m.Reference())
 		}
 
 		if m.Content == "blue lock" {
